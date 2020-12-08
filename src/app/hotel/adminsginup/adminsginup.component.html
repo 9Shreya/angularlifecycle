@@ -1,0 +1,207 @@
+<div class="container-fluid">
+  <div class="a" style="font-size: 25px; font-weight: bolder;">
+    For coustomer details
+    <button class="btn btn-success" routerLink="coustomers">Click here</button>
+  </div>
+  <br /><br /><br />
+  <div class="row">
+    <div class="col-md-5">
+      <h2 class="a" style="font-size: 20px;">
+        Add new employee details
+      </h2>
+      <div class="modeel" style="border: 2px solid rgb(168, 161, 161);">
+        <div class="model">
+          <form #user="ngForm" (ngSubmit)="onCreat(user)">
+            <div class="form-group">
+              <p class="a">Full Name</p>
+
+              <input
+                type="text"
+                #na="ngModel"
+                name="name"
+              
+                [(ngModel)]="name"
+                class="form-control a"
+                [class.is-invalid]="na.invalid && na.touched"
+                [class.is-valid]="na.valid"
+                pattern="[\w\ ]{3,20}"
+                required
+              />
+              <div *ngIf="na.errors && na.touched && na.invalid">
+                <small class="text-danger" *ngIf="na.errors.required">
+                  Required
+                </small>
+                <small class="text-danger" *ngIf="na.errors.pattern">
+                  Name should be of atleast 3 letters
+                </small>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <p class="a">Mobile No.</p>
+              <input
+                type="text"
+                class="form-control a"
+                #phon="ngModel"
+                name="phone"
+                [(ngModel)]="phone"
+                [class.is-invalid]="phon.touched && phon.invalid"
+                [class.is-valid]="phon.valid"
+                required
+               
+                pattern="[\7-9][\d]{9}"
+              />
+              <div *ngIf="phon.touched && phon.invalid && phon.errors">
+                <small class="text-danger" *ngIf="phon.errors.required">
+                  Required
+                </small>
+                <small class="text-danger" *ngIf="phon.errors.pattern">
+                  mobile number should start with 7 or 8 or 9
+                </small>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <p class="a">Email</p>
+              <input
+                type="text"
+                name="email"
+                #email="ngModel"
+                [(ngModel)]="emaill"
+                class="form-control a"
+                required
+                [class.is-invalid]="email.touched && email.invalid"
+                [class.is-valid]="email.valid"
+            
+                pattern="[\w\.-]{4,20}(@[\w]{3,6})(.[\w]{2,6})"
+              />
+              <div *ngIf="email.touched && email.invalid && email.errors">
+                <small class="text-danger" *ngIf="email.errors.required">
+                  Required
+                </small>
+                <small class="text-danger" *ngIf="email.errors.pattern">
+                  Email should be like example@gmail.com
+                </small>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <p class="a">Password</p>
+              <input
+                type="password"
+                name="pass"
+                #pass="ngModel"
+                [(ngModel)]="password"
+                required
+                id=""
+                class="form-control a"
+                [class.is-invalid]="pass.touched && pass.invalid"
+                [class.is-valid]="pass.valid"
+                pattern="[\w]{5,20}"
+              />
+
+              <div *ngIf="pass.invalid && pass.touched && pass.errors">
+                <small class="text-danger" *ngIf="pass.errors.required">
+                  Required
+                </small>
+                <small class="text-danger" *ngIf="pass.errors.pattern">
+                  Password should be of atleast 5 digits
+                </small>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <p class="a">Confirm Password</p>
+              <input
+                type="password"
+                name="cpass"
+                #cpass="ngModel"
+                [(ngModel)]="cpassword"
+                required
+                class="form-control a"
+                [class.is-invalid]="cpass.touched && cpass.invalid"
+                pattern="[\w]{5,20}"
+              />
+              <div *ngIf="cpass.invalid && cpass.touched && cpass.errors">
+                <small class="text-danger" *ngIf="cpass.errors.required">
+                  Required
+                </small>
+                <small class="text-danger" *ngIf="pass.value !== cpass.value">
+                  Password should be matching
+                </small>
+              </div>
+            </div>
+            <div class="a">
+              <button
+                [disabled]="user.invalid"
+                class="btn btn-primary"
+                style="width: 40%;"
+              >
+                Submit
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <div
+      class="col-md-5 mainbox"
+    >
+      <h2 class="a" style="font-size: 20px;">
+        Details of employees in our hotel
+      </h2>
+      <div *ngFor="let d of data">
+        <div
+          class="col-md-12 innerbox"
+          style="display: flex;flex-wrap: wrap;"
+        >
+          <div class="col-md-7 col-sm-7">
+            <p style="font-size: 15px; font-weight: bolder;">
+              Name:<span style="font-size: 15px; font-weight: normal;">
+                {{ d.name }}</span
+              >
+            </p>
+
+            <p style="font-size: 15px; font-weight: bolder;">
+              Phone:<span style="font-size: 15px; font-weight: normal;">{{
+                d.phone
+              }}</span>
+            </p>
+
+            <p style="font-size: 15px; font-weight: bolder;">
+              Email:<span style="font-size: 15px; font-weight: normal;">{{
+                d.email
+              }}</span>
+            </p>
+          </div>
+
+          <div class="col-md-2" style=" float: right;">
+            <button
+              class="btn btn-success"
+              style="width: 100px;"
+              routerLink="Edit"
+            >
+              Edit</button
+            >
+            <button
+              class="btn btn-danger"
+              style="width: 120px;margin: -2px 0 0 -5px;"
+               (click)="openSnackBar('Do you want to delete '+d.name+' data','Yes',d)" 
+            >
+              Delete
+            </button>             
+             <!-- (click)="openSnackBar('Do you want to delete '+d.name+' data','Yes',d)" -->
+
+          </div>
+        </div>
+        <br />
+      </div>
+    </div>
+  </div>
+</div>
+<div class="loading" *ngIf="loading" style="z-index: 1111;">
+      <div  id="cssLoader17" >
+          <div class="cssLoader17"></div>
+      </div>
+    </div>

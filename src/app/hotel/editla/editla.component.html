@@ -1,0 +1,169 @@
+<div class="container">
+  <div class="row" >
+    <div class="col-md-6" >
+      <div class="">
+        <div class="">
+          <form #user="ngForm" (ngSubmit)="onModify(user)">
+            <div class="form-group ">
+              <p class="a">Full Name</p>
+
+              <input
+                type="text"
+                #na="ngModel"
+                name="name"
+                id=""
+                [(ngModel)]="msg.name"
+                class="form-control a"
+                [class.is-invalid]="na.invalid && na.touched"
+                pattern="[\w\ ]{3,20}"
+                required
+              />
+              <div *ngIf="na.errors && na.touched && na.invalid">
+                <small class="text-danger" *ngIf="na.errors.required">
+                  Required
+                </small>
+                <small class="text-danger" *ngIf="na.errors.pattern">
+                  Name should be of atleast 3 letters
+                </small>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <p class="a">Mobile No.</p>
+              <input
+                type="text"
+                class="form-control a"
+                #phone="ngModel"
+                name="phone"
+                [(ngModel)]="msg.phone"
+                [class.is-invalid]="phone.touched && phone.invalid"
+                required
+                id=""
+                pattern="[\7-9][\d]{9}"
+              />
+              <div *ngIf="phone.touched && phone.invalid && phone.errors">
+                <small class="text-danger" *ngIf="phone.errors.required">
+                  Required
+                </small>
+                <small class="text-danger" *ngIf="phone.errors.pattern">
+                  mobile number should start with 7 or 8 or 9
+                </small>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <p class="a">Email</p>
+              <input
+                type="text"
+                name="email"
+                #email="ngModel"
+                [(ngModel)]="msg.email"
+                class="form-control a"
+                required
+                [class.is-invalid]="email.touched && email.invalid"
+                id=""
+                pattern="[ \w\.-]{4,20}(@[\w]{3,6})(.[\w]{2,6})"
+              />
+              <div *ngIf="email.touched && email.invalid && email.errors">
+                <small class="text-danger" *ngIf="email.errors.required">
+                  Required
+                </small>
+                <small class="text-danger" *ngIf="email.errors.pattern">
+                  Email should be like example@gmail.com
+                </small>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <p class="a">Password</p>
+              <input
+                type="text"
+                name="pass"
+                #pass="ngModel"
+                [(ngModel)]="msg.pass"
+                required
+                id=""
+                class="form-control a"
+                [class.is-invalid]="pass.touched && pass.invalid"
+                pattern="[ \w]{5,20}"
+              />
+
+              <div *ngIf="pass.invalid && pass.touched && pass.errors">
+                <small class="text-danger" *ngIf="pass.errors.required">
+                  Required
+                </small>
+                <small class="text-danger" *ngIf="pass.errors.pattern">
+                  Password should be of atleast 5 digits
+                </small>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <p class="a">Id of Employee</p>
+              <input
+                type="text"
+                name="id"
+                [(ngModel)]="id"
+                class="form-control a"
+              />
+            </div>
+            <div class="a">
+              <button class="btn btn-primary">
+                Modify
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <div
+      class="col-md-5 mainbox"
+      style="display: table-caption; position: relative;"
+    >
+      <h3 class="a">Employee details you want to update</h3>
+      <div  *ngFor="let d of data">
+        <div class="col-md-12"
+          class="innerbox"
+          style="display: flex;flex-wrap: wrap; padding-top: 5px;"
+        >
+          <div class="col-md-10 col-sm-4">
+            <p style="font-size: 15px; font-weight: bolder;">
+              Name:<span style="font-size: 15px; font-weight: normal;">
+                {{ d.name }}</span
+              >
+            </p>
+
+            <p style="font-size: 15px; font-weight: bolder;">
+              Phone:<span style="font-size: 15px; font-weight: normal;">{{
+                d.phone
+              }}</span>
+            </p>
+
+            <p style="font-size: 15px; font-weight: bolder;">
+              Email:<span style="font-size: 15px; font-weight: normal;">{{
+                d.email
+              }}</span>
+            </p>
+          </div>
+          <br />
+          <div   class="col-md-2 ">
+            <button
+              class="btn btn-success"
+              style="width: 100px; margin-top: 20px; margin-left: 100px; float: right;"
+              (click)="onUpdate(d)"
+            >
+              Edit
+            </button>
+          </div>
+        </div>
+        <br />
+      </div>
+    </div>
+  </div>
+</div>
+<div class="loading" *ngIf="loading" style="z-index: 1111;">
+      <div  id="cssLoader17" >
+          <div class="cssLoader17"></div>
+      </div>
+    </div>

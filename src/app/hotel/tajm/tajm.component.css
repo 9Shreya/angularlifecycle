@@ -1,0 +1,12 @@
+.carousel-control-next {
+  right: -50%;
+}
+body {
+  height: 1000px;
+}
+
+@media (max-width: 890px) {
+  .d {
+    margin-bottom: 20px;
+  }
+}

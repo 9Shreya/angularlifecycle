@@ -1,0 +1,27 @@
+.image {
+  
+  height: 500px;
+  width: 100%;
+  background-size: cover;
+  overflow: hidden;
+  animation: frank 35s infinite;
+  /* animation: name duration timing-function delay iteration-count direction
+            fill-mode; */
+}
+@keyframes frank {
+  0% {
+    background-image: url("/assets/34.jpg");
+  }
+  25% {
+    background-image: url("/assets/33.jpg");
+  }
+  50% {
+    background-image: url("/assets/32.jpg");
+  }
+  75% {
+    background-image: url("/assets/31.jpg");
+  }
+  100% {
+    background-image: url("/assets/30.jpg");
+  }
+}

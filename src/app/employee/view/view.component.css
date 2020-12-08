@@ -1,0 +1,67 @@
+.one {
+    font-size: 17px;
+    margin-right: 10px;
+    font-weight: bolder;
+}
+
+.two {
+    float: right;
+    padding-right: 50px;
+    font-size: 15px;
+    font-weight: bold;
+}
+
+.cards {
+    display: flex;
+    flex-wrap: wrap;
+    border: 1px solid grey;
+    border-radius: 10px;
+    margin: 20px;
+}
+
+.option {
+    float: right;
+    margin-right: 50px;
+    margin-top: 20px;
+}
+
+.btn-danger,
+.btn-success {
+    height: 40px;
+    border-radius: 5px;
+}
+
+#deletedis {
+    visibility: hidden;
+}
+
+.option:hover+#deletedis {
+    visibility: visible;
+}
+
+#deletedis:hover {
+    visibility: visible;
+}
+
+.form-group input {
+    /* border-bottom: 1px solid grey; */
+    border-radius: 0%;
+    transition: linear .6s;
+}
+
+textarea {
+    border-radius: 0%;
+    transition: linear .8s;
+}
+
+.form-group input:hover {
+    width: 90%;
+    border-bottom: 2px solid grey;
+    box-shadow: 0 2px 2px 0 rgb(122, 114, 228);
+}
+
+textarea:hover {
+    width: 90%;
+    border-bottom: 1px solid grey;
+    box-shadow: 0 2px 2px 0 rgb(122, 114, 228);
+}

@@ -1,0 +1,10 @@
+@media (max-width:495px) {
+    .imagecol {
+        left: 30%;
+    }
+}
+ul li button{
+    border: none;
+    outline: none;
+    background-color: transparent;
+}

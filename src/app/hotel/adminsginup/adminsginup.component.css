@@ -1,0 +1,40 @@
+.model {
+  width: 95%;
+  height: 95%;
+  padding-top: 8%;
+  position: relative;
+  padding-left: 3%;
+}
+.a {
+  text-align: center;
+  font-size: 15px;
+  font-weight: bolder;
+}
+
+.innerbox {
+  width: auto;
+  height: auto;
+  border: 2px solid rgb(156, 151, 151);
+  border-radius: 8px;
+  padding: 5px;
+}
+.modeel {
+  text-align: center;
+  height: auto;
+  border-radius: 8px;
+}
+ button{
+  border-radius: 8px;
+}
+.mainbox{
+  height: auto;
+  width:100%;
+  display: table-caption; 
+  margin-left: 80px; 
+  position: relative;
+}
+@media(max-width:500px){
+  .mainbox{
+    margin-left: 0px;
+  }
+}

@@ -1,0 +1,48 @@
+<div class="container">
+    <h1>Angular Google Maps with Places Search</h1>
+
+    <form class="example-form">
+        <mat-form-field class="example-full-width" style="width: 100%">
+            <input (click)="onClickInfoView(valueforinput)" type="text" placeholder="Search Location to see the distance" matInput [formControl]="myControl" [matAutocomplete]="auto" name="inputform" [(ngModel)]="valueforinput" />
+
+            <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
+                <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
+                    {{ option }}
+                </mat-option>
+            </mat-autocomplete>
+            <button mat-raised-button color="primary" style="
+          float: right;
+          position: absolute;
+          margin-left: -90px;
+          margin-top: -30px;
+        " (click)="onClickInfoView(valueforinput)">
+        <i class="fa fa-search"></i> Search
+      </button>
+        </mat-form-field>
+    </form>
+
+    <!-- <router-outlet></router-outlet> -->
+    <agm-map [latitude]="latitude" [longitude]="longitude">
+        <agm-marker [label]="{ color: 'white', text: 'Current Location' }" [latitude]="latitude" [longitude]="longitude" [markerDraggable]="true" (markerClick)="selectMarker($event)">
+            <agm-info-window>Current Location </agm-info-window>
+        </agm-marker>
+        <agm-marker *ngFor="let marker of markers" [latitude]="marker.lat" [longitude]="marker.lng"  [markerDraggable]="true" (markerClick)="
+        getDistanceFromLatLonInKm(
+          marker.lat,
+          marker.lng,
+          latitude,
+          longitude,
+          marker.value
+        )
+      ">
+            <agm-info-window>
+                <a href="https://www.google.com/maps/dir/?api=1&origin={{ latitude }},{{
+            longitude
+          }}&destination={{ marker.lat }},{{ marker.lng }}" class="btn btn-attention pull-right">
+          {{ marker.value }}</a
+        >
+      </agm-info-window>
+    </agm-marker>
+  </agm-map>
+  <div style="font-size: 20px; margin-top: 10px" id="distance"></div>
+</div>

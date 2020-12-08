@@ -1,0 +1,36 @@
+.main{
+    display: flex;
+}
+.par{
+    font-size:3vw
+}
+.parent{
+    width: 50%;
+    height: 100vh;
+   text-transform:capitalize;
+}
+.child{
+    width: 50%;
+    height: 100vh;
+    text-transform:capitalize;
+}
+button{
+    width: 50%;
+    height: 6vh;
+    font-size: 1.5vw;
+    text-transform:capitalize;
+}
+p{
+    font-size: 2vw;
+}
+@media(max-width:450px){
+    .parent{
+        font-size:3vw; 
+    }
+    button{
+        width: 55%;
+        height: 4vh;
+        font-size: 2vw;
+        text-transform:capitalize;
+    }
+}

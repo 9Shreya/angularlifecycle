@@ -1,0 +1,50 @@
+    button {
+        width: 100%;
+        height: 40px;
+        font-size: 20px;
+        text-transform: capitalize;
+        border: none;
+        outline: none;
+    }
+    
+    .QrCode {
+        width: 100%;
+        height: 40px;
+        font-size: 20px;
+        text-transform: capitalize;
+        border: none;
+        outline: none;
+        background-image: linear-gradient( to right, rgb(34, 31, 31), rgb(243, 243, 239), rgb(34, 31, 31), rgb(243, 243, 239), rgb(34, 31, 31), rgb(243, 243, 239), rgb(34, 31, 31), rgb(243, 243, 239), rgb(34, 31, 31), rgb(243, 243, 239), rgb(34, 31, 31), rgb(243, 243, 239), rgb(34, 31, 31), rgb(243, 243, 239), rgb(34, 31, 31), rgb(243, 243, 239));
+    }
+    
+    .webcam {
+        width: 100%;
+        height: 40px;
+        font-size: 20px;
+        border: none;
+        outline: none;
+        text-transform: capitalize;
+        box-shadow:  2px 2px 0 0 rgb(88, 87, 87);
+        background-image: linear-gradient( to right, rgb(255, 0, 212), yellow, red, yellow);
+    }
+    
+    .webcam span {
+        margin: 0px 40px 0 50px;
+        font-size: 40px;
+    }
+    
+    .map {
+        background-image: url("/assets/download.jpeg");
+        box-shadow: 0 2px 2px 0 rgb(88, 87, 87);
+    }
+    
+    .emp {
+        box-shadow: 2px 0 2px 0 rgb(88, 87, 87);
+        background-image: url("/assets/lop.jpeg");
+        background-size: cover;
+    }
+      .hotel {
+        background-image: url("/assets/hori.jpeg");
+        box-shadow: 0 2px 2px 0 rgb(88, 87, 87);
+           
+    }

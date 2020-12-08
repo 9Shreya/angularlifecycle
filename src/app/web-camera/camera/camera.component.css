@@ -1,0 +1,9 @@
+.actionBtn {
+    font-size: 4em;
+    cursor: pointer;
+    margin: 20px 0 80px 40%;
+}
+
+.captured {
+    padding-bottom: 20px;
+}

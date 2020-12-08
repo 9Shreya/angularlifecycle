@@ -1,0 +1,501 @@
+<div style="height: 100%;" id="takeanote1">
+<div class="notetag" [style.backgroundColor]="colors">
+    <form (ngSubmit)="onCreat(form)" #form="ngForm" [style.backgroundColor]="colors">
+        <!-- <form [formGroup]="form" (ngSubmit)="onCreat(form,hi)" #form="ngForm"> -->
+
+        <mat-accordion class="example-headers-align" [style.backgroundColor]="colors">
+            <mat-expansion-panel hideToggle [expanded]="step === 2" (opened)="setStep(2)" [style.backgroundColor]="colors" name="colors" [(ngModel)]="colors">
+                <mat-expansion-panel-header>
+                    <mat-panel-title>
+                        <mat-form-field appearance="none"><input id="" matInput placeholder=" Title" name="title" [(ngModel)]="title" />
+                        </mat-form-field>
+                    </mat-panel-title>
+
+                    <mat-panel-description>
+                        <input id="file-input" (change)="onSelectFile($event)" type="file" style="display: none" [(ngModel)]="urls" name="urls" />
+                        <input style="display: none" [(ngModel)]="paint" name="paint" />
+                        <img matTooltip="New note with drawing" routerLink="/keep/paint" src="assets\paint.png" class="paint" alt="" />
+                        <img class="pin" style="width: 40px; height: 40px" src="assets\pin+it+pinterest+tag+icon-1320186904521471824.png" alt="" />
+                    </mat-panel-description>
+                </mat-expansion-panel-header>
+
+                <mat-form-field appearance="none">
+                    <input id="" name="note" [(ngModel)]="note" style="border-bottom: none" matInput placeholder=" Take a note .." /></mat-form-field>
+
+                <img [src]="urls" height="100" />
+                <img [src]="paint" height="100" /><br />
+
+                <div>
+                    <div class="titleicon">
+                        <mat-icon style="margin: 0 0 0 5%" (click)="takera()" matTooltip="Remind me">notifications_none</mat-icon>
+
+                        <mat-icon (click)="createArchives(form)" (click)="nextStep()" matTooltip="Archive">
+                            archive</mat-icon>
+                        <mat-icon style="margin-left: -5px" (mouseover)="colorpaletnote()"   matTooltip="Change color">color_lens</mat-icon>
+
+                        <label for="file-input">
+              <mat-icon id="" matTooltip="Add image"
+                >add_photo_alternate</mat-icon
+              >
+            </label>
+                        <div class="notecolors" *ngIf="colopaletnote">
+                            <div class="input" *ngFor="let k of ar">
+                                <button name="colors" [(ngModel)]="colors" [style.backgroundColor]="k" (click)="changenote(k)" (click)="nextStep()"></button>
+                            </div>
+                        </div>
+                    </div>
+                    <button class="btn btn-warning" (click)="nextStep()">Add</button>
+
+                    <input style="display: none" [(ngModel)]="dt" name="date" />
+                    <input style="display: none" [(ngModel)]="tm" name="time" />
+                    <input style="display: none" [(ngModel)]="rp" name="repeat" />
+
+                    <div *ngIf="takerema" id="pickers" style="
+              width: 270px;
+              height: 200px;
+              border: 0.2px solid;
+              padding: 10px;
+              display: none;
+              position: relative;
+              z-index: 1;
+            ">
+                        <mat-form-field class="example-full-width" appearance="fill">
+                            <mat-label>Choose a date</mat-label>
+                            <input matInput [matDatepicker]="picker" name="date" [(ngModel)]="dt" />
+
+                            <mat-datepicker-toggle matSuffix [for]="picker">
+                                <mat-icon matDatepickerToggleIcon>keyboard_arrow_down</mat-icon>
+                            </mat-datepicker-toggle>
+                            <mat-datepicker #picker></mat-datepicker>
+                        </mat-form-field>
+                        <form style="margin-top: -20px; width: 500px">
+                            <mat-form-field appearance="fill" style="width: 238px">
+                                <mat-label>Pick a time</mat-label>
+                                <mat-select [(ngModel)]="tm" name="time">
+                                    <mat-option *ngFor="let food of foods" [value]="food">
+                                        {{ food }}
+                                    </mat-option>
+                                </mat-select>
+                            </mat-form-field>
+                        </form>
+                        <form style="margin-top: -20px; width: 500px">
+                            <mat-form-field appearance="fill" style="width: 238px">
+                                <mat-label>Does not repeat</mat-label>
+                                <mat-select [(ngModel)]="rp" name="repeat">
+                                    <mat-option *ngFor="let repeat of repeats" [value]="repeat">
+                                        {{ repeat }}
+                                    </mat-option>
+                                </mat-select>
+                            </mat-form-field>
+                        </form>
+                    </div>
+
+                    <!-- remainderpopup -->
+                    <div id="remainderpo" class="card" *ngIf="takerema" style="margin-top: -2px; width: 280px; height: auto; z-index: 1">
+                        <h4 class="card-header">Remainder :</h4>
+                        <div class="card-body">
+                            <p style="font-size: 13px">
+                                Later today<span style="float: right; font-size: small; color: grey">8:00PM</span
+                >
+              </p>
+
+              <p style="font-size: 13px">
+                Tommorow<span
+                  style="float: right; font-size: small; color: grey"
+                  >8:00AM</span
+                >
+              </p>
+              <p style="font-size: 13px">
+                Next week<span
+                  style="float: right; font-size: small; color: grey"
+                  >Mon,8:00AM</span
+                >
+              </p>
+              <p style="font-size: 13px">
+                Work<span style="float: right; font-size: small; color: grey"
+                  >Embassy Tech Square Main Rd</span
+                >
+              </p>
+
+              <div (click)="remember()">
+                <i class="fa fa-clock-o" aria-hidden="true"></i>
+                <span style="font-size: 14px">Pick a date</span>
+                        </div>
+                        <!-- <a href="#" class="btn btn-primary">Go somewhere</a> -->
+                    </div>
+                </div>
+
+                <input style="display: none" name="id" [(ngModel)]="id" />
+                <input style="display: none" name="page" [(ngModel)]="page" />
+
+                <!--      -->
+</div>
+</mat-expansion-panel>
+</mat-accordion>
+</form>
+</div>
+<!-- style="display: flex; flex-wrap: wrap; margin: auto" -->
+<div class="container">
+    <mat-card [style.backgroundColor]="colorid === f.id ? color : 'white'" [style.backgroundColor]="f.colors"   class="card" *ngFor="let f of data">
+        <div (click)="onUpdate(f)" data-toggle="modal" data-target="#exampleModalCent">
+            <div *ngIf="f.title !== null && f.title != 'null'">
+                <p>{{ f.title }}</p>
+            </div>
+            <div *ngIf="f.note !== null && f.note != 'null'">
+                <p>{{ f.note }}</p>
+            </div>
+            <div *ngIf="f.urls !== null && f.urls !== 'null'">
+                <img style="width: 100%; height: 100%; overflow: hidden" src="{{ f.urls }}" alt="" />
+            </div>
+        </div>
+        <!-- paint -->
+
+        <div *ngIf="f.paint !== null">
+            <div (click)="onSelectPaint(f)" *ngIf="
+          f.paint !==
+          'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAlgAAAJYCAYAAAC+ZpjcAAAdsUlEQVR4Xu3WMREAAAgDMerfNCZ+DAI65Bh+5wgQIECAAAECBFKBpWvGCBAgQIAAAQIETmB5AgIECBAgQIBALCCwYlBzBAgQIECAAAGB5QcIECBAgAABArGAwIpBzREgQIAAAQIEBJYfIECAAAECBAjEAgIrBjVHgAABAgQIEBBYfoAAAQIECBAgEAsIrBjUHAECBAgQIEBAYPkBAgQIECBAgEAsILBiUHMECBAgQIAAAYHlBwgQIECAAAECsYDAikHNESBAgAABAgQElh8gQIAAAQIECMQCAisGNUeAAAECBAgQEFh+gAABAgQIECAQCwisGNQcAQIECBAgQEBg+QECBAgQIECAQCwgsGJQcwQIECBAgAABgeUHCBAgQIAAAQKxgMCKQc0RIECAAAECBASWHyBAgAABAgQIxAICKwY1R4AAAQIECBAQWH6AAAECBAgQIBALCKwY1BwBAgQIECBAQGD5AQIECBAgQIBALCCwYlBzBAgQIECAAAGB5QcIECBAgAABArGAwIpBzREgQIAAAQIEBJYfIECAAAECBAjEAgIrBjVHgAABAgQIEBBYfoAAAQIECBAgEAsIrBjUHAECBAgQIEBAYPkBAgQIECBAgEAsILBiUHMECBAgQIAAAYHlBwgQIECAAAECsYDAikHNESBAgAABAgQElh8gQIAAAQIECMQCAisGNUeAAAECBAgQEFh+gAABAgQIECAQCwisGNQcAQIECBAgQEBg+QECBAgQIECAQCwgsGJQcwQIECBAgAABgeUHCBAgQIAAAQKxgMCKQc0RIECAAAECBASWHyBAgAABAgQIxAICKwY1R4AAAQIECBAQWH6AAAECBAgQIBALCKwY1BwBAgQIECBAQGD5AQIECBAgQIBALCCwYlBzBAgQIECAAAGB5QcIECBAgAABArGAwIpBzREgQIAAAQIEBJYfIECAAAECBAjEAgIrBjVHgAABAgQIEBBYfoAAAQIECBAgEAsIrBjUHAECBAgQIEBAYPkBAgQIECBAgEAsILBiUHMECBAgQIAAAYHlBwgQIECAAAECsYDAikHNESBAgAABAgQElh8gQIAAAQIECMQCAisGNUeAAAECBAgQEFh+gAABAgQIECAQCwisGNQcAQIECBAgQEBg+QECBAgQIECAQCwgsGJQcwQIECBAgAABgeUHCBAgQIAAAQKxgMCKQc0RIECAAAECBASWHyBAgAABAgQIxAICKwY1R4AAAQIECBAQWH6AAAECBAgQIBALCKwY1BwBAgQIECBAQGD5AQIECBAgQIBALCCwYlBzBAgQIECAAAGB5QcIECBAgAABArGAwIpBzREgQIAAAQIEBJYfIECAAAECBAjEAgIrBjVHgAABAgQIEBBYfoAAAQIECBAgEAsIrBjUHAECBAgQIEBAYPkBAgQIECBAgEAsILBiUHMECBAgQIAAAYHlBwgQIECAAAECsYDAikHNESBAgAABAgQElh8gQIAAAQIECMQCAisGNUeAAAECBAgQEFh+gAABAgQIECAQCwisGNQcAQIECBAgQEBg+QECBAgQIECAQCwgsGJQcwQIECBAgAABgeUHCBAgQIAAAQKxgMCKQc0RIECAAAECBASWHyBAgAABAgQIxAICKwY1R4AAAQIECBAQWH6AAAECBAgQIBALCKwY1BwBAgQIECBAQGD5AQIECBAgQIBALCCwYlBzBAgQIECAAAGB5QcIECBAgAABArGAwIpBzREgQIAAAQIEBJYfIECAAAECBAjEAgIrBjVHgAABAgQIEBBYfoAAAQIECBAgEAsIrBjUHAECBAgQIEBAYPkBAgQIECBAgEAsILBiUHMECBAgQIAAAYHlBwgQIECAAAECsYDAikHNESBAgAABAgQElh8gQIAAAQIECMQCAisGNUeAAAECBAgQEFh+gAABAgQIECAQCwisGNQcAQIECBAgQEBg+QECBAgQIECAQCwgsGJQcwQIECBAgAABgeUHCBAgQIAAAQKxgMCKQc0RIECAAAECBASWHyBAgAABAgQIxAICKwY1R4AAAQIECBAQWH6AAAECBAgQIBALCKwY1BwBAgQIECBAQGD5AQIECBAgQIBALCCwYlBzBAgQIECAAAGB5QcIECBAgAABArGAwIpBzREgQIAAAQIEBJYfIECAAAECBAjEAgIrBjVHgAABAgQIEBBYfoAAAQIECBAgEAsIrBjUHAECBAgQIEBAYPkBAgQIECBAgEAsILBiUHMECBAgQIAAAYHlBwgQIECAAAECsYDAikHNESBAgAABAgQElh8gQIAAAQIECMQCAisGNUeAAAECBAgQEFh+gAABAgQIECAQCwisGNQcAQIECBAgQEBg+QECBAgQIECAQCwgsGJQcwQIECBAgAABgeUHCBAgQIAAAQKxgMCKQc0RIECAAAECBASWHyBAgAABAgQIxAICKwY1R4AAAQIECBAQWH6AAAECBAgQIBALCKwY1BwBAgQIECBAQGD5AQIECBAgQIBALCCwYlBzBAgQIECAAAGB5QcIECBAgAABArGAwIpBzREgQIAAAQIEBJYfIECAAAECBAjEAgIrBjVHgAABAgQIEBBYfoAAAQIECBAgEAsIrBjUHAECBAgQIEBAYPkBAgQIECBAgEAsILBiUHMECBAgQIAAAYHlBwgQIECAAAECsYDAikHNESBAgAABAgQElh8gQIAAAQIECMQCAisGNUeAAAECBAgQEFh+gAABAgQIECAQCwisGNQcAQIECBAgQEBg+QECBAgQIECAQCwgsGJQcwQIECBAgAABgeUHCBAgQIAAAQKxgMCKQc0RIECAAAECBASWHyBAgAABAgQIxAICKwY1R4AAAQIECBAQWH6AAAECBAgQIBALCKwY1BwBAgQIECBAQGD5AQIECBAgQIBALCCwYlBzBAgQIECAAAGB5QcIECBAgAABArGAwIpBzREgQIAAAQIEBJYfIECAAAECBAjEAgIrBjVHgAABAgQIEBBYfoAAAQIECBAgEAsIrBjUHAECBAgQIEBAYPkBAgQIECBAgEAsILBiUHMECBAgQIAAAYHlBwgQIECAAAECsYDAikHNESBAgAABAgQElh8gQIAAAQIECMQCAisGNUeAAAECBAgQEFh+gAABAgQIECAQCwisGNQcAQIECBAgQEBg+QECBAgQIECAQCwgsGJQcwQIECBAgAABgeUHCBAgQIAAAQKxgMCKQc0RIECAAAECBASWHyBAgAABAgQIxAICKwY1R4AAAQIECBAQWH6AAAECBAgQIBALCKwY1BwBAgQIECBAQGD5AQIECBAgQIBALCCwYlBzBAgQIECAAAGB5QcIECBAgAABArGAwIpBzREgQIAAAQIEBJYfIECAAAECBAjEAgIrBjVHgAABAgQIEBBYfoAAAQIECBAgEAsIrBjUHAECBAgQIEBAYPkBAgQIECBAgEAsILBiUHMECBAgQIAAAYHlBwgQIECAAAECsYDAikHNESBAgAABAgQElh8gQIAAAQIECMQCAisGNUeAAAECBAgQEFh+gAABAgQIECAQCwisGNQcAQIECBAgQEBg+QECBAgQIECAQCwgsGJQcwQIECBAgAABgeUHCBAgQIAAAQKxgMCKQc0RIECAAAECBASWHyBAgAABAgQIxAICKwY1R4AAAQIECBAQWH6AAAECBAgQIBALCKwY1BwBAgQIECBAQGD5AQIECBAgQIBALCCwYlBzBAgQIECAAAGB5QcIECBAgAABArGAwIpBzREgQIAAAQIEBJYfIECAAAECBAjEAgIrBjVHgAABAgQIEBBYfoAAAQIECBAgEAsIrBjUHAECBAgQIEBAYPkBAgQIECBAgEAsILBiUHMECBAgQIAAAYHlBwgQIECAAAECsYDAikHNESBAgAABAgQElh8gQIAAAQIECMQCAisGNUeAAAECBAgQEFh+gAABAgQIECAQCwisGNQcAQIECBAgQEBg+QECBAgQIECAQCwgsGJQcwQIECBAgAABgeUHCBAgQIAAAQKxgMCKQc0RIECAAAECBASWHyBAgAABAgQIxAICKwY1R4AAAQIECBAQWH6AAAECBAgQIBALCKwY1BwBAgQIECBAQGD5AQIECBAgQIBALCCwYlBzBAgQIECAAAGB5QcIECBAgAABArGAwIpBzREgQIAAAQIEBJYfIECAAAECBAjEAgIrBjVHgAABAgQIEBBYfoAAAQIECBAgEAsIrBjUHAECBAgQIEBAYPkBAgQIECBAgEAsILBiUHMECBAgQIAAAYHlBwgQIECAAAECsYDAikHNESBAgAABAgQElh8gQIAAAQIECMQCAisGNUeAAAECBAgQEFh+gAABAgQIECAQCwisGNQcAQIECBAgQEBg+QECBAgQIECAQCwgsGJQcwQIECBAgAABgeUHCBAgQIAAAQKxgMCKQc0RIECAAAECBASWHyBAgAABAgQIxAICKwY1R4AAAQIECBAQWH6AAAECBAgQIBALCKwY1BwBAgQIECBAQGD5AQIECBAgQIBALCCwYlBzBAgQIECAAAGB5QcIECBAgAABArGAwIpBzREgQIAAAQIEBJYfIECAAAECBAjEAgIrBjVHgAABAgQIEBBYfoAAAQIECBAgEAsIrBjUHAECBAgQIEBAYPkBAgQIECBAgEAsILBiUHMECBAgQIAAAYHlBwgQIECAAAECsYDAikHNESBAgAABAgQElh8gQIAAAQIECMQCAisGNUeAAAECBAgQEFh+gAABAgQIECAQCwisGNQcAQIECBAgQEBg+QECBAgQIECAQCwgsGJQcwQIECBAgAABgeUHCBAgQIAAAQKxgMCKQc0RIECAAAECBASWHyBAgAABAgQIxAICKwY1R4AAAQIECBAQWH6AAAECBAgQIBALCKwY1BwBAgQIECBAQGD5AQIECBAgQIBALCCwYlBzBAgQIECAAAGB5QcIECBAgAABArGAwIpBzREgQIAAAQIEBJYfIECAAAECBAjEAgIrBjVHgAABAgQIEBBYfoAAAQIECBAgEAsIrBjUHAECBAgQIEBAYPkBAgQIECBAgEAsILBiUHMECBAgQIAAAYHlBwgQIECAAAECsYDAikHNESBAgAABAgQElh8gQIAAAQIECMQCAisGNUeAAAECBAgQEFh+gAABAgQIECAQCwisGNQcAQIECBAgQEBg+QECBAgQIECAQCwgsGJQcwQIECBAgAABgeUHCBAgQIAAAQKxgMCKQc0RIECAAAECBASWHyBAgAABAgQIxAICKwY1R4AAAQIECBAQWH6AAAECBAgQIBALCKwY1BwBAgQIECBAQGD5AQIECBAgQIBALCCwYlBzBAgQIECAAAGB5QcIECBAgAABArGAwIpBzREgQIAAAQIEBJYfIECAAAECBAjEAgIrBjVHgAABAgQIEBBYfoAAAQIECBAgEAsIrBjUHAECBAgQIEBAYPkBAgQIECBAgEAsILBiUHMECBAgQIAAAYHlBwgQIECAAAECsYDAikHNESBAgAABAgQElh8gQIAAAQIECMQCAisGNUeAAAECBAgQEFh+gAABAgQIECAQCwisGNQcAQIECBAgQEBg+QECBAgQIECAQCwgsGJQcwQIECBAgAABgeUHCBAgQIAAAQKxgMCKQc0RIECAAAECBASWHyBAgAABAgQIxAICKwY1R4AAAQIECBAQWH6AAAECBAgQIBALCKwY1BwBAgQIECBAQGD5AQIECBAgQIBALCCwYlBzBAgQIECAAAGB5QcIECBAgAABArGAwIpBzREgQIAAAQIEBJYfIECAAAECBAjEAgIrBjVHgAABAgQIEBBYfoAAAQIECBAgEAsIrBjUHAECBAgQIEBAYPkBAgQIECBAgEAsILBiUHMECBAgQIAAAYHlBwgQIECAAAECsYDAikHNESBAgAABAgQElh8gQIAAAQIECMQCAisGNUeAAAECBAgQEFh+gAABAgQIECAQCwisGNQcAQIECBAgQEBg+QECBAgQIECAQCwgsGJQcwQIECBAgAABgeUHCBAgQIAAAQKxgMCKQc0RIECAAAECBASWHyBAgAABAgQIxAICKwY1R4AAAQIECBAQWH6AAAECBAgQIBALCKwY1BwBAgQIECBAQGD5AQIECBAgQIBALCCwYlBzBAgQIECAAAGB5QcIECBAgAABArGAwIpBzREgQIAAAQIEBJYfIECAAAECBAjEAgIrBjVHgAABAgQIEBBYfoAAAQIECBAgEAsIrBjUHAECBAgQIEBAYPkBAgQIECBAgEAsILBiUHMECBAgQIAAAYHlBwgQIECAAAECsYDAikHNESBAgAABAgQElh8gQIAAAQIECMQCAisGNUeAAAECBAgQEFh+gAABAgQIECAQCwisGNQcAQIECBAgQEBg+QECBAgQIECAQCwgsGJQcwQIECBAgAABgeUHCBAgQIAAAQKxgMCKQc0RIECAAAECBASWHyBAgAABAgQIxAICKwY1R4AAAQIECBAQWH6AAAECBAgQIBALCKwY1BwBAgQIECBAQGD5AQIECBAgQIBALCCwYlBzBAgQIECAAAGB5QcIECBAgAABArGAwIpBzREgQIAAAQIEBJYfIECAAAECBAjEAgIrBjVHgAABAgQIEBBYfoAAAQIECBAgEAsIrBjUHAECBAgQIEBAYPkBAgQIECBAgEAsILBiUHMECBAgQIAAAYHlBwgQIECAAAECsYDAikHNESBAgAABAgQElh8gQIAAAQIECMQCAisGNUeAAAECBAgQEFh+gAABAgQIECAQCwisGNQcAQIECBAgQEBg+QECBAgQIECAQCwgsGJQcwQIECBAgAABgeUHCBAgQIAAAQKxgMCKQc0RIECAAAECBASWHyBAgAABAgQIxAICKwY1R4AAAQIECBAQWH6AAAECBAgQIBALCKwY1BwBAgQIECBAQGD5AQIECBAgQIBALCCwYlBzBAgQIECAAAGB5QcIECBAgAABArGAwIpBzREgQIAAAQIEBJYfIECAAAECBAjEAgIrBjVHgAABAgQIEBBYfoAAAQIECBAgEAsIrBjUHAECBAgQIEBAYPkBAgQIECBAgEAsILBiUHMECBAgQIAAAYHlBwgQIECAAAECsYDAikHNESBAgAABAgQElh8gQIAAAQIECMQCAisGNUeAAAECBAgQEFh+gAABAgQIECAQCwisGNQcAQIECBAgQEBg+QECBAgQIECAQCwgsGJQcwQIECBAgAABgeUHCBAgQIAAAQKxgMCKQc0RIECAAAECBASWHyBAgAABAgQIxAICKwY1R4AAAQIECBAQWH6AAAECBAgQIBALCKwY1BwBAgQIECBAQGD5AQIECBAgQIBALCCwYlBzBAgQIECAAAGB5QcIECBAgAABArGAwIpBzREgQIAAAQIEBJYfIECAAAECBAjEAgIrBjVHgAABAgQIEBBYfoAAAQIECBAgEAsIrBjUHAECBAgQIEBAYPkBAgQIECBAgEAsILBiUHMECBAgQIAAAYHlBwgQIECAAAECsYDAikHNESBAgAABAgQElh8gQIAAAQIECMQCAisGNUeAAAECBAgQEFh+gAABAgQIECAQCwisGNQcAQIECBAgQEBg+QECBAgQIECAQCwgsGJQcwQIECBAgAABgeUHCBAgQIAAAQKxgMCKQc0RIECAAAECBASWHyBAgAABAgQIxAICKwY1R4AAAQIECBAQWH6AAAECBAgQIBALCKwY1BwBAgQIECBAQGD5AQIECBAgQIBALCCwYlBzBAgQIECAAAGB5QcIECBAgAABArGAwIpBzREgQIAAAQIEBJYfIECAAAECBAjEAgIrBjVHgAABAgQIEBBYfoAAAQIECBAgEAsIrBjUHAECBAgQIEBAYPkBAgQIECBAgEAsILBiUHMECBAgQIAAAYHlBwgQIECAAAECsYDAikHNESBAgAABAgQElh8gQIAAAQIECMQCAisGNUeAAAECBAgQEFh+gAABAgQIECAQCwisGNQcAQIECBAgQEBg+QECBAgQIECAQCwgsGJQcwQIECBAgAABgeUHCBAgQIAAAQKxgMCKQc0RIECAAAECBASWHyBAgAABAgQIxAICKwY1R4AAAQIECBAQWH6AAAECBAgQIBALCKwY1BwBAgQIECBAQGD5AQIECBAgQIBALCCwYlBzBAgQIECAAAGB5QcIECBAgAABArGAwIpBzREgQIAAAQIEBJYfIECAAAECBAjEAgIrBjVHgAABAgQIEBBYfoAAAQIECBAgEAsIrBjUHAECBAgQIEBAYPkBAgQIECBAgEAsILBiUHMECBAgQIAAAYHlBwgQIECAAAECsYDAikHNESBAgAABAgQElh8gQIAAAQIECMQCAisGNUeAAAECBAgQEFh+gAABAgQIECAQCwisGNQcAQIECBAgQEBg+QECBAgQIECAQCwgsGJQcwQIECBAgAABgeUHCBAgQIAAAQKxgMCKQc0RIECAAAECBASWHyBAgAABAgQIxAICKwY1R4AAAQIECBAQWH6AAAECBAgQIBALCKwY1BwBAgQIECBAQGD5AQIECBAgQIBALCCwYlBzBAgQIECAAAGB5QcIECBAgAABArGAwIpBzREgQIAAAQIEBJYfIECAAAECBAjEAgIrBjVHgAABAgQIEBBYfoAAAQIECBAgEAsIrBjUHAECBAgQIEBAYPkBAgQIECBAgEAsILBiUHMECBAgQIAAAYHlBwgQIECAAAECsYDAikHNESBAgAABAgQElh8gQIAAAQIECMQCAisGNUeAAAECBAgQEFh+gAABAgQIECAQCwisGNQcAQIECBAgQEBg+QECBAgQIECAQCwgsGJQcwQIECBAgAABgeUHCBAgQIAAAQKxgMCKQc0RIECAAAECBASWHyBAgAABAgQIxAICKwY1R4AAAQIECBAQWH6AAAECBAgQIBALCKwY1BwBAgQIECBAQGD5AQIECBAgQIBALCCwYlBzBAgQIECAAAGB5QcIECBAgAABArGAwIpBzREgQIAAAQIEBJYfIECAAAECBAjEAgIrBjVHgAABAgQIEBBYfoAAAQIECBAgEAsIrBjUHAECBAgQIEBAYPkBAgQIECBAgEAsILBiUHMECBAgQIAAAYHlBwgQIECAAAECsYDAikHNESBAgAABAgQElh8gQIAAAQIECMQCAisGNUeAAAECBAgQEFh+gAABAgQIECAQCwisGNQcAQIECBAgQEBg+QECBAgQIECAQCwgsGJQcwQIECBAgAABgeUHCBAgQIAAAQKxgMCKQc0RIECAAAECBASWHyBAgAABAgQIxAICKwY1R4AAAQIECBAQWH6AAAECBAgQIBALCKwY1BwBAgQIECBAQGD5AQIECBAgQIBALCCwYlBzBAgQIECAAAGB5QcIECBAgAABArGAwIpBzREgQIAAAQIEBJYfIECAAAECBAjEAgIrBjVHgAABAgQIEBBYfoAAAQIECBAgEAsIrBjUHAECBAgQIEBAYPkBAgQIECBAgEAsILBiUHMECBAgQIAAAYHlBwgQIECAAAECsYDAikHNESBAgAABAgQElh8gQIAAAQIECMQCAisGNUeAAAECBAgQEFh+gAABAgQIECAQCwisGNQcAQIECBAgQEBg+QECBAgQIECAQCwgsGJQcwQIECBAgAABgeUHCBAgQIAAAQKxgMCKQc0RIECAAAECBASWHyBAgAABAgQIxAICKwY1R4AAAQIECBAQWH6AAAECBAgQIBALCKwY1BwBAgQIECBAQGD5AQIECBAgQIBALCCwYlBzBAgQIECAAAGB5QcIECBAgAABArGAwIpBzREgQIAAAQIEBJYfIECAAAECBAjEAgIrBjVHgAABAgQIEBBYfoAAAQIECBAgEAsIrBjUHAECBAgQIEBAYPkBAgQIECBAgEAsILBiUHMECBAgQIAAAYHlBwgQIECAAAECsYDAikHNESBAgAABAgQElh8gQIAAAQIECMQCAisGNUeAAAECBAgQEFh+gAABAgQIECAQCwisGNQcAQIECBAgQEBg+QECBAgQIECAQCwgsGJQcwQIECBAgAABgeUHCBAgQIAAAQKxgMCKQc0RIECAAAECBASWHyBAgAABAgQIxAICKwY1R4AAAQIECBB4CI8CWV89EyAAAAAASUVORK5CYII='
+        ">
+                <img style="width: 150px; height: 150px" src="{{ f.paint }}" alt="" />
+            </div>
+        </div>
+
+        <!-- <cardicon started></cardicon> -->
+
+        <div *ngIf="f.date !== null && f.date != 'null'">
+            <i style="font-size: 15px" class="far">&#xf017;</i>
+            <label>
+        <input
+          type="text"
+          class="datein"
+          placeholder="
+ {{f.date.toDate() | date}} {{f.time}}"
+          disabled
+        />
+      </label>
+        </div>
+
+        <div class="cardicon">
+            <div class="colors" *ngIf="f.id === colopalet" value="f.id">
+                <div class="input" *ngFor="let k of ar">
+                    <button [style.backgroundColor]="k" (click)="changecolo(k, f.id, f)"></button>
+                </div>
+            </div>
+
+            <mat-icon (click)="remainde(f.id)" matTooltip="Remind me">notifications_none</mat-icon>
+
+            <!-- datepickersatred -->
+
+            <div id="pickers" *ngIf="f.id === rema" style="
+          border-radius: 10px;
+          width: 270px;
+          height: 250px;
+          border: 0.2px solid;
+          padding: 10px;
+          display: none;
+          position: absolute;
+          background-color: rgb(253, 255, 227);
+          z-index: 1;
+        ">
+                <mat-form-field class="example-full-width" appearance="fill">
+                    <mat-label>Choose a date</mat-label>
+                    <input matInput [matDatepicker]="picker" name="date" [(ngModel)]="date" />
+
+                    <mat-datepicker-toggle matSuffix [for]="picker">
+                        <mat-icon matDatepickerToggleIcon>keyboard_arrow_down</mat-icon>
+                    </mat-datepicker-toggle>
+                    <mat-datepicker #picker></mat-datepicker>
+                </mat-form-field>
+                <form style="margin-top: -20px; width: 500px">
+                    <mat-form-field appearance="fill" style="width: 244px">
+                        <mat-label>Pick a time</mat-label>
+                        <mat-select [(ngModel)]="time" name="time">
+                            <mat-option *ngFor="let food of foods" [value]="food">
+                                {{ food }}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </form>
+                <form style="margin-top: -20px; width: 500px">
+                    <mat-form-field appearance="fill" style="width: 244px">
+                        <mat-label>Does not repeat</mat-label>
+                        <mat-select [(ngModel)]="rept" name="repeat">
+                            <mat-option *ngFor="let repeat of repeats" [value]="repeat">
+                                {{ repeat }}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </form>
+                <button style="width: 80px; color: black; margin-top: 0px; float: right" class="btn-warning" (click)="remaindedatechange(date, time, rept, f.id, f)">
+          save
+        </button>
+            </div>
+
+            <!-- remainderpopup -->
+            <div id="remainderpo" class="card" *ngIf="f.id === rema" style="
+          margin-top: -2px;
+          width: 150%;
+          position: absolute;
+          height: auto;
+          z-index: 1;
+         
+        ">
+                <h4 class="card-header">Remainder :</h4>
+                <div class="card-body">
+                    <p style="font-size: 13px">
+                        Later today<span style="float: right; font-size: small; color: grey">8:00PM</span
+            >
+          </p>
+
+          <p style="font-size: 13px">
+            Tommorow<span style="float: right; font-size: small; color: grey"
+              >8:00AM</span
+            >
+          </p>
+          <p style="font-size: 13px">
+            Next week<span style="float: right; font-size: small; color: grey"
+              >Mon,8:00AM</span
+            >
+          </p>
+          <p style="font-size: 13px">
+            Work<span style="float: right; font-size: small; color: grey"
+              >Embassy Tech Square Main Rd</span
+            >
+          </p>
+          <div (click)="remember()">
+            <i class="fa fa-clock-o" aria-hidden="true"></i>
+            <span style="font-size: 14px">Pick a date</span>
+                </div>
+                <!-- <a href="#" class="btn btn-primary">Go somewhere</a> -->
+            </div>
+        </div>
+
+        <mat-icon>
+            <img matTooltip="Edit note with drawing" (click)="onSelectPaint(f)"  src="assets\paint.png" class="paintt" alt="" />
+        </mat-icon>
+        <label for="file-input">
+        <mat-icon
+          id="#hi"
+          data-toggle="modal"
+          data-target="#exampleModalCent"
+          (click)="onUpdate(f)"
+          matTooltip="Add image"
+          >add_photo_alternate</mat-icon
+        >
+      </label>
+
+        <mat-icon matTooltip="Delete note" (click)="
+          openSnackBarrestor(
+            '  You want to delete note from here and save in trash','yes',f
+          )
+        ">delete_outline</mat-icon>
+
+        <mat-icon (click)="createArchiv(f)" matTooltip="Archive" (click)="openSnackBar('  Your file got archived','ok')">archive</mat-icon>
+        <mat-icon (mouseover)="colorpalet(f.id)" matTooltip="Change color">
+            color_lens
+        </mat-icon>
+</div>
+
+
+
+
+</mat-card>
+</div>
+<!-- Button trigger modal -->
+
+<form (ngSubmit)="modify(form)" #form="ngForm">
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModalCent" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document" [style.backgroundColor]="color">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <mat-form-field appearance="none" class="modal-title" id="exampleModalLongTitle"><input id="" matInput placeholder=" Title" name="title" [(ngModel)]="title" />
+                    </mat-form-field>
+
+                    <mat-panel-description>
+                        <input id="ile-input" (change)="onSelectFile($event)" type="file" style="display: none" [(ngModel)]="urls" name="urls" />
+                        <input style="display: none" [(ngModel)]="paint" name="paint" />
+                    </mat-panel-description>
+
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+                </div>
+
+                <div class="modal-body">
+                    <mat-form-field appearance="none">
+                        <input id="" name="note" [(ngModel)]="note" style="border-bottom: none" matInput placeholder=" Take a note .." /></mat-form-field>
+
+                    <img [src]="urls" height="100" />
+                    <img [src]="paint" height="100" (click)="onSelectPaint(id)" [ngModel]="id" /><br />
+                </div>
+                <div class="modal-footer">
+                    <div style="display: flex">
+                        <div class="titleiconmodal">
+                            <div class="titleicon">
+                                <mat-icon style="margin: 0 0 0 10px" (click)="takera()" matTooltip="Remind me">notifications_none</mat-icon>
+
+                                <mat-icon (click)="createArchives(form)" matTooltip="Archive">
+                                    archive</mat-icon>
+
+                                <label for="file-input">
+                  <mat-icon
+                    id=""
+                    style="margin-top: -3px; margin-left: -20px"
+                    matTooltip="Add image"
+                    >add_photo_alternate</mat-icon
+                  >
+                </label>
+                                <div class="noecolors" *ngIf="colopaletnote" >
+                                    <div class="input" *ngFor="let k of ar">
+                                        <button name="colors" [(ngModel)]="colors" [style.backgroundColor]="k" (click)="changenote(k)"></button>
+                                    </div>
+                                </div>
+                                <mat-icon (mouseover)="colorpaletnote()"  style="margin-left: -20px" matTooltip="Change color">
+                                    color_lens
+                                </mat-icon>
+                            </div>
+                        </div>
+                    </div>
+
+                    <button id="modify" class="btn btn-success" data-toggle="modal" data-target="#exampleCenter" routerLink="/keep" >
+            Modify
+          </button>
+                    <div id="pickers" *ngIf="takerema" style="
+              border-radius: 10px;
+              width: 270px;
+              height: 200px;
+              border: 0.2px solid;
+              padding: 10px;
+              display: none;
+              background-color: rgb(250, 252, 222);
+              z-index: 1;
+            ">
+                        <mat-form-field class="example-full-width" appearance="fill">
+                            <mat-label>Choose a date</mat-label>
+                            <input matInput [matDatepicker]="picker" name="date" [(ngModel)]="dt" />
+
+                            <mat-datepicker-toggle matSuffix [for]="picker">
+                                <mat-icon matDatepickerToggleIcon>keyboard_arrow_down</mat-icon>
+                            </mat-datepicker-toggle>
+                            <mat-datepicker #picker></mat-datepicker>
+                        </mat-form-field>
+                        <form style="margin-top: -20px; width: 500px">
+                            <mat-form-field appearance="fill" style="width: 238px">
+                                <mat-label>Pick a time</mat-label>
+                                <mat-select [(ngModel)]="tm" name="time">
+                                    <mat-option *ngFor="let food of foods" [value]="food">
+                                        {{ food }}
+                                    </mat-option>
+                                </mat-select>
+                            </mat-form-field>
+                        </form>
+                        <form style="margin-top: -20px; width: 500px">
+                            <mat-form-field appearance="fill" style="width: 238px">
+                                <mat-label>Does not repeat</mat-label>
+                                <mat-select [(ngModel)]="rp" name="repeat">
+                                    <mat-option *ngFor="let repeat of repeats" [value]="repeat">
+                                        {{ repeat }}
+                                    </mat-option>
+                                </mat-select>
+                            </mat-form-field>
+                        </form>
+                    </div>
+
+                    <!-- remainderpopup -->
+                    <div id="remainderpo" class="card" *ngIf="takerema" style="
+              margin-top: -2px;
+              width: 280px;
+              height: auto;
+              z-index: 1;
+              position: relative;
+            ">
+                        <h4 class="card-header">Remainder :</h4>
+                        <div class="card-body">
+                            <p style="font-size: 13px">
+                                Later today<span style="float: right; font-size: small; color: grey">8:00PM</span
+                >
+              </p>
+
+              <p style="font-size: 13px">
+                Tommorow<span
+                  style="float: right; font-size: small; color: grey"
+                  >8:00AM</span
+                >
+              </p>
+              <p style="font-size: 13px">
+                Next week<span
+                  style="float: right; font-size: small; color: grey"
+                  >Mon,8:00AM</span
+                >
+              </p>
+              <p style="font-size: 13px">
+                Work<span style="float: right; font-size: small; color: grey"
+                  >Embassy Tech Square Main Rd</span
+                >
+              </p>
+
+              <!-- <div>
+        <input
+          type="text"
+          class="datein"
+          name="remainder"
+          [(ngModel)]="reinder"
+          disabled
+        />
+      </div> -->
+
+              <!-- <input
+        type="date"
+        id="remainder"
+        [(ngModel)]="reinder"
+        name="remainder"
+        style="border: none; outline: none"
+        (click)=""
+      /> -->
+              <div (click)="remember()">
+                <i class="fa fa-clock-o" aria-hidden="true"></i>
+                <span style="font-size: 14px">Pick a date</span>
+                        </div>
+                        <!-- <a href="#" class="btn btn-primary">Go somewhere</a> -->
+                    </div>
+                </div>
+                <!-- <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button> -->
+            </div>
+        </div>
+    </div>
+    </div>
+</form>
+
+<div class="modal fade" id="exampleCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header" style="border: none">
+                <h2 class="modal-title" id="exampleModalLongTitle">
+                    your data got modified successfully
+                </h2>
+                <button type="button" class="close" routerLink="/keep" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-success"  routerLink="/keep" data-dismiss="modal" >
+          ok
+        </button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- <div *ngFor="let book of data; let indexOfelement = index">
+  <div *ngIf="id == book.id">
+    ngFor index: {{ indexOfelement }} value : {{ book.id }}
+    <input [(ngModel)]="inde" value="{{ indexOfelement }}" name="inx" #hif />{{
+      hif.value
+    }}{{ inde }}
+  </div>
+</div>
+
+{{ id }}
+<button (click)="call()">fg</button> --></div>
+<div id="loading" *ngIf="loading">
+       <div class="width"></div>
+                </div>

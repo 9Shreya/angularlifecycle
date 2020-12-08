@@ -1,0 +1,80 @@
+zxing-scanner {
+    max-width: 100%;
+}
+
+header button {
+    position: sticky;
+    top: 0;
+    padding: 10px;
+    background: #333;
+    display: flex;
+    margin-left: 8px;
+}
+
+mat-form-field {
+    width: 100%;
+    font-weight: bold;
+}
+
+.mat-form-field-underline {
+    bottom: 0;
+}
+
+option {
+    padding: 10px;
+    line-height: 2;
+    background: #474747;
+    color: black;
+}
+
+.results {
+    position: sticky;
+    bottom: 0;
+    padding: 15px;
+    background: #02c3c3;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+small {
+    font-weight: bolder;
+    display: block;
+    font-size: 60%;
+    margin: -0.6em 0 0 0;
+}
+
+button {
+    background: none;
+    border: none;
+    line-height: 1;
+    font-weight: bolder;
+    font-size: 120%;
+    float: right;
+    color: black;
+}
+
+h2 {
+    padding: 0 16px;
+}
+
+:host zxing-scanner::ng-deep some-element {
+    max-height: 70vh;
+    width: 100vw;
+    object-fit: contain;
+}
+
+zxing-scanner {
+    width: 45%;
+    margin-left: 25%;
+}
+
+section {
+    width: 80%;
+    height: auto;
+    border: 0.2pc solid rgb(248, 244, 244);
+    background-color: ivory;
+    margin-left: 10%;
+    word-break: break-all;
+}

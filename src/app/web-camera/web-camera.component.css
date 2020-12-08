@@ -1,0 +1,16 @@
+.actionBtn {
+    margin-top: 5px;
+    margin-bottom: 2px;
+    font-size: 1.2em;
+}
+
+.snapshot img {
+    text-align: center;
+    width: 650px;
+    height: 500px;
+    margin-top: 30px;
+}
+
+ul.links {
+    padding-bottom: 20px;
+}

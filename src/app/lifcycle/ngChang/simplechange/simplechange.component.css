@@ -1,0 +1,8 @@
+p{
+    font-size: 3vw;
+}
+@media(min-width:450px){
+    p{
+        font-size: 2vw;
+    }
+}

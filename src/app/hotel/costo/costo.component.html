@@ -1,0 +1,54 @@
+<div class="row">
+<div
+  class="col-md-8 mainbox"
+  style=" position: relative; overflow:auto "
+>
+  <h2 class="a" style="font-size: 20px;">
+    Details of coustomers
+  </h2>
+  <div *ngFor="let d of data">
+    <div class="col-md-8 ">
+      <div class="col-md-12 innerbox" style="display: flex;flex-wrap: wrap;">
+        <div class="col-md-6">
+          <p style="font-size: 15px; font-weight: bolder;">
+            Name:<span style="font-size: 15px; font-weight: normal;">
+              {{ d.name }}</span
+            >
+          </p>
+
+          <p style="font-size: 15px; font-weight: bolder;">
+            Phone:<span style="font-size: 15px; font-weight: normal;">{{
+              d.phone
+            }}</span>
+          </p>
+
+          <p style="font-size: 15px; font-weight: bolder;">
+            Email:<span style="font-size: 15px; font-weight: normal;">{{
+              d.email
+            }}</span>
+          </p>
+        </div>
+        <div class="col-md-2">
+          <button
+            class="btn btn-danger"
+            style="width: 150px; "
+            (click)="
+        openSnackBar(
+          'You want to delete ' +d.name+' coustomer data','yes',d
+        )
+      "
+      >
+            Delete
+          </button>
+        </div>
+      </div>
+    </div>
+    <br />
+  </div>
+</div>
+</div>
+<div class="loading" *ngIf="loading" style="z-index: 1111;">
+      <div  id="cssLoader17" >
+          <div class="cssLoader17"></div>
+      </div>
+    </div>

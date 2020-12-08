@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+  
+
+<nav class="navbar-nav navbar-fixed-top">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-4 col-sm-6 col-xs-6 logo">
+                <button class="but2">
+          <a routerLink="/hotel">
+            HotelBooking.com<span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+          </a>
+        </button>
+            </div>
+            <div class="hi col-md-8">
+                <div class="col-md-3"></div>
+                <button class="but but1 col-md-3" style="width: 200px;">
+          <a class="sg" routerLink="admin">
+            Admin Work
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span
+          ></a>
+        </button>
+                <button class="but but1 col-md-3" style="width: 200px;">
+          <a class="sg" routerLink="sginUp">
+            SignUp
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span
+          ></a>
+        </button>
+
+                <button class="but but1 col-md-3 col-sm-1 col-xs-1 ma" style="font-size: 25px;" (click)="toggel()">
+          <a>
+            &#9776;
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span
+          ></a>
+        </button>
+            </div>
+        </div>
+    </div>
+</nav>
+<article class="col-md-5">
+    <div id="mySidenav" class="sidenav">
+        <div class="container-fluid">
+            <a class="closebtn" style="color: blanchedalmond;" (click)="toggel()">x</a>
+            <nav class="navbar bg-light">
+                <!-- Links -->
+
+                <ul class="navbar-nav">
+                    <li class="nav-item dropdown">
+                        <button id="buttonArticle" data-toggle="dropdown">
+              <a class="nav-link dropdown-toggle but1" 
+                >Karnataka
+</a>
+            </button>
+
+                        <br />
+                        <ul class="dropdown-menu">
+                            <li class="insidetag">
+                                <button id="buttonArticle" class="btn">
+                  <a
+                    routerLink="/karnataka/marriot"
+                    class="dropdown-item"
+                    ><p id="insidelist">Marriott Bengaluru</p>
+                  </a>
+                </button>
+                            </li>
+                        </ul>
+                    </li>
+                    <br />
+
+                    <li class="nav-item dropdown">
+                        <button id="buttonArticle" data-toggle="dropdown">
+              <a
+                class="nav-link dropdown-toggle but1"
+           
+                >Madhya Pradesh
+               </a>
+            </button>
+                        <br />
+                        <ul class="dropdown-menu">
+                            <li class="insidetag">
+                                <button id="buttonArticle" class="btn">
+                  <a
+                    routerLink="/madhya-pradesh/taj"
+                    class="dropdown-item"
+                    ><p id="insidelist">Taj Safari</p>
+                  </a>
+                </button>
+                            </li>
+                        </ul>
+                    </li>
+                    <br />
+
+                    <li class="nav-item dropdown">
+                        <button id="buttonArticle" data-toggle="dropdown">
+              <a class="nav-link dropdown-toggle but1" 
+                >Uttarakhand
+              </a>
+            </button>
+                        <br />
+                        <ul class="dropdown-menu">
+                            <li class="insidetag">
+                                <button id="buttonArticle" class="btn">
+                  <a
+                  routerLink="/utrakhand/prestige"
+                    class="dropdown-item"
+                    ><p id="insidelist">Prestige Bangalore</p></a
+                  >
+                </button>
+                            </li>
+                        </ul>
+                    </li>
+                    <br />
+                    <li class="nav-item dropdown">
+                        <button id="buttonArticle" data-toggle="dropdown">
+              <a class="nav-link dropdown-toggle but1" 
+                >Kashmir
+              </a>
+            </button>
+                        <br />
+                        <ul class="dropdown-menu">
+                            <li class="insidetag">
+                                <button id="buttonArticle" class="btn">
+                  <a
+                  routerLink="/kashmir/usha-kiran"
+                    class="dropdown-item"
+                    ><p id="insidelist">Usha Kiran Palace</p></a
+                  >
+                </button>
+                            </li>
+                        </ul>
+                    </li>
+                    <br />
+                    <li class="nav-item dropdown">
+                        <button id="buttonArticle" data-toggle="dropdown">
+              <a
+                class="nav-link dropdown-toggle but1"
+                
+                >Himachal Pradesh
+                </a>
+            </button>
+                        <br />
+                        <ul class="dropdown-menu">
+                            <li class="insidetag">
+                                <button id="buttonArticle" class="btn">
+                  <a
+                  routerLink="/himachal-pradesh/novotel"
+                    class="dropdown-item"
+                    ><p id="insidelist">Novotel Hotel</p></a
+                  >
+                </button>
+                            </li>
+                        </ul>
+                    </li>
+                    <br />
+                    <li class="nav-item dropdown">
+                        <button id="buttonArticle" data-toggle="dropdown">
+              <a class="nav-link dropdown-toggle but1" 
+              >Maharastra</a>
+            </button>
+                        <br />
+                        <ul class="dropdown-menu">
+                            <li class="insidetag">
+                                <button id="buttonArticle" class="btn">
+                  <a
+                  routerLink="/maharastra/radisson-mumbai"
+                    class="dropdown-item"
+                    ><p id="insidelist">Radisson Mumbai</p></a
+                  >
+                </button>
+                            </li>
+                        </ul>
+                    </li>
+                    <br />
+                    <li class="nav-item dropdown">
+                        <button id="buttonArticle" data-toggle="dropdown">
+              <a class="nav-link dropdown-toggle but1" 
+                >Kerala
+             
+              </a>
+            </button>
+                        <br />
+                        <ul class="dropdown-menu">
+                            <li class="insidetag">
+                                <button id="buttonArticle" class="btn">
+                  <a
+                  routerLink="/kerala/grand-hyatt"
+                    class="dropdown-item"
+                    ><p id="insidelist">Grand Hyatt</p></a
+                  >
+                </button>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+</article>
+<main>
+    <section id="home">
+        <div class="container-fluid">
+            <router-outlet></router-outlet>
+            <button id="bton" (click)="onclik()">Up</button>
+        </div>
+    </section>
+</main>
+               <!-- <button style="background-color: transparent;"><i class="fab fa-facebook-f" style="color: rgb(179, 132, 45);position: relative;"></i></button> -->
+
+<footer>
+    <div class="footter">
+        <div class="row">
+            <ul>
+                <div class="col-md-6 col-sm-6 col-xs-6 shr" style="margin-top: 8px;">
+                    <li>
+                        <button class="but2 col-md-3 col-sm-3 col-xs-2 bu">
+              <a 
+                >Contact Us
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span
+              ></a>
+            </button>
+                    </li>
+                    <li>
+                        <button class="but2 col-md-3 col-sm-3 col-xs-2 bu">
+              <a 
+                >Facilities
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span
+              ></a>
+            </button>
+                    </li>
+                    <li>
+                        <button class="but2 col-md-3 col-sm-3 col-xs-2 bu">
+              <a 
+                >About Us
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span
+              ></a>
+            </button>
+                    </li>
+                </div>
+                <div class="col-md-5 col-sm-5 col-xs-5 ico">
+                    <li class="face col-sm-1 h">
+                        <button><i class="fa fa-facebook-f" style="color: blanchedalmond;"></i></button>
+                    </li>
+                    <li class="twi col-sm-1 h">
+                        <button><i class="fa fa-twitter"  style="color: blanchedalmond;"></i></button>
+                    </li>
+                    <li class="you col-sm-1 h">
+                        <button><i class="fa fa-youtube" style="color: blanchedalmond;"></i></button>
+                    </li>
+                    <li class="int col-sm-1 h">
+                        <button><i class="fa fa-instagram" style="color: blanchedalmond;"></i></button>
+                    </li>
+                </div>
+            </ul>
+        </div>
+    </div>
+</footer>
+</body>
+</html>

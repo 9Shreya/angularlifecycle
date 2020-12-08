@@ -1,0 +1,176 @@
+<div style="display: flex;flex-wrap: wrap;">
+<ng-container *ngIf="id === null; then loggedIn; else loggedOut">
+</ng-container>
+
+<ng-template #loggedIn>
+    <div class="notetag col-md-8">
+        <form (ngSubmit)="onCreat(form)" #form="ngForm">
+            <div class="example-headers-align">
+                <div style=" width: 100%">
+                    <div align='center'>
+                        <canvas [style.backgroundColor]="colors" name="paint" [(ngModel)]="paint" #canvas id="thecanvas" style=" width: 85%; border: 1px solid black">
+            </canvas>
+                    </div>
+                    <input style="display: none" [(ngModel)]="dt" name="date" />
+                    <input style="display: none" [(ngModel)]="tm" name="time" />
+                    <input style="display: none" [(ngModel)]="rp" name="repeat" />
+
+                    <!-- 
+           <div *ngIf="f.title !== null && f.title != 'null'">
+         <p>{{ f.title }}</p>
+           </div>
+          <div *ngIf="f.note !== null && f.note != 'null'">
+           <p>{{ f.note }}</p>
+          </div> -->
+                    <input style="display: none" name="page" [(ngModel)]="page" value="note" />
+                    <div>
+                        <input id="" matInput placeholder=" Title" name="title" [(ngModel)]="title" style="width: 60vw; text-align: center" />
+                    </div>
+
+                    <input id="file-input" (change)="onSelectFile($event)" type="file" style="display: none" [(ngModel)]="urls" name="urls" />
+
+                    <input style="display: none" [(ngModel)]="colors" name="colors" />
+                    <input style="display: none" name="id" [(ngModel)]="id" />
+                    <div>
+                        <input id="" name="note" [(ngModel)]="note" style="border-bottom: none" matInput style="width: 60vw; text-align: center" placeholder=" Take a note .." />
+                    </div>
+
+                    <div>
+                        <div style="display: flex">
+                            <div class="remainder">
+                                <!-- svg for Remainder -->
+                            </div>
+                            <mat-icon style="margin-left: -5px" (mouseover)="colorpaletnote()" matTooltip="Change color">color_lens</mat-icon>
+
+                            <div class="testadd">
+                                <button (click)="
+                    draw(
+                      id,
+                      paint,
+                      title,
+                      note,
+                      urls,
+                      colors,
+                      date,
+                      time,
+                      repeat,
+                      page
+                    )
+                  " style="float: right" class="btn btn-warning" data-toggle="modal" data-target="#exampleModalCenter">
+                  <!-- <button routerLink="/keep" style="display: none;">kjfd</button> --> Add
+                                </button>
+                            </div>
+                            <div class="notecolors" *ngIf="colopaletnote">
+                                <div class="input" *ngFor="let k of ar">
+                                    <input name="colors" [(ngModel)]="colors" [style.backgroundColor]="k" (click)="changenote(k)">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</ng-template>
+<ng-template #loggedOut>
+    <div class="notetag col-md-8">
+        <form #form="ngForm" (ngSubmit)="onmodify(form)">
+            <!-- (ngSubmit)="onCreat(form)"  -->
+            <div class="example-headers-align">
+                <div style="height: 100%; width: 100%">
+                    <div>
+                        <div>
+                            <canvas [style.backgroundColor]="colors" name="paint" [(ngModel)]="paint" #canvas id="thecanvas" style="height: 100%; width: 100%; border: 1px solid black">
+              </canvas>
+                        </div>
+                    </div>
+                    <input style="display: none" [(ngModel)]="dt" name="date" />
+                    <input style="display: none" [(ngModel)]="tm" name="time" />
+                    <input style="display: none" [(ngModel)]="rp" name="repeat" />
+
+                    <div>
+                        <input id="" matInput placeholder=" Title" name="title" [(ngModel)]="title" style="width: 60vw; text-align: center" />
+                    </div>
+
+                    <input id="file-input" (change)="onSelectFile($event)" type="file" style="display: none" [(ngModel)]="urls" name="urls" />
+
+                    <input style="display: none" [(ngModel)]="colors" name="colors" />
+                    <input style="display: none" name="id" [(ngModel)]="id" />
+                    <div>
+                        <input id="" name="note" [(ngModel)]="note" style="border-bottom: none" matInput style="width: 60vw; text-align: center" placeholder=" Take a note .." />
+                    </div>
+                    <input style="display: none" name="page" [(ngModel)]="page" />
+
+                    <div>
+                        <div style="display: flex">
+                            <div class="remainder">
+                                <!-- svg for Remainder -->
+                            </div>
+                            <mat-icon style="margin-left: -5px" (mouseover)="colorpaletnote()" matTooltip="Change color">color_lens</mat-icon>
+                            <div class="notecolors" *ngIf="colopaletnote">
+                                <div class="input" *ngFor="let k of ar">
+                                    <input name="colors" [(ngModel)]="colors" [style.backgroundColor]="k" (click)="changenote(k)">
+                                </div>
+                            </div>
+                            <div class="testadd">
+                                <button (click)="draw(id,paint,title,note,urls,colors,date,time,repeat,page) " style="float: right" class="btn btn-warning" data-toggle="modal" data-target="#exampleModalCenter">
+                  <!-- <button routerLink="/keep" style="display: none;">kjfd</button> --> Modify
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</ng-template>
+
+<div class="col-md-3 clasmain"  >
+<h2>Choose color of marker</h2>
+<div style="display: flex;flex-wrap: wrap;">  <div class="input"*ngFor="let arrr of arpen ;index as i" >
+    <button class='allpin'  (click)="paintcolor(arrr)" id="i" [style.backgroundColor]=arrr ></button>
+</div>
+</div>  
+<button style="margin: 20px 0 0 30%;background-color:#ffe4b5 ;" mat-raised-button  (click)=ngAfterViewInit()>Clear</button>
+</div>
+
+</div>
+<div style="margin-top: 20px; display: flex; flex-wrap: wrap">
+    <div *ngIf="urls != null && urls != 'null'">
+        <img class="card" [src]="urls" width="250px" height="auto" alt="" style="margin: 5px" />
+    </div>
+    <div *ngIf="paint != null && paint != 'null'">
+        <img class="card" [src]="paint" alt="" width="250px" height="auto" style="margin: 5px" />
+    </div>
+</div>
+<!-- data-toggle="modal" data-target="#exampleModalCenter" -->
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header" style="border: none">
+                <h2 class="modal-title" id="exampleModalLongTitle">
+                    Your file got added successfully
+                </h2>
+                <button type="button" class="close" routerLink="/keep" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+            </div>
+
+            <div class="modal-footer">
+                <div *ngIf="page === 'rem'; else logg">
+                    <button type="button" class="btn btn-success" routerLink="/keep/remainder" data-dismiss="modal">
+            ok
+          </button>
+                </div>
+
+                <ng-template #logg>
+                    <button type="button" class="btn btn-success" routerLink="/keep" data-dismiss="modal">
+            ok
+          </button>
+                </ng-template>
+            </div>
+        </div>
+    </div>
+</div>

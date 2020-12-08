@@ -1,0 +1,115 @@
+.fa-wifi,
+.fa-mobile,
+.fa-bed,
+.fa-shirtsinbulk {
+  font-size: 100px;
+  color: orangered;
+}
+.icons {
+  font-size: 20px;
+}
+.icon {
+  text-align: center;
+  margin-top: 30px;
+}
+.mobile {
+  position: absolute;
+  margin-top: -2px;
+  margin-left: 1150px;
+}
+.img {
+  letter-spacing: -2px;
+  overflow: hidden;
+}
+.imgm {
+  box-shadow: 0 0 6px 2px gray;
+
+  overflow: hidden;
+  border-radius: 10px;
+  height: 200%;
+}
+.img1 {
+  display: flex;
+  margin-top: 20px;
+}
+.input {
+  width: 100%;
+  height: 100px;
+  border-radius: 10px;
+  box-shadow: 0 0 6px 2px rgb(197, 189, 189);
+  position: relative;
+  margin-top: 100px;
+  display: flex;
+}
+.hi {
+  margin-left: 2%;
+  margin-top: 5px;
+  width: 100%;
+  height: 50px;
+  padding-left: 20px;
+  border-radius: 10px;
+}
+.div {
+  display: flex;
+}
+.pic {
+  flex: 1;
+  position: relative;
+  transition: 0.8s;
+  margin-top: 40px;
+}
+.pic:hover,
+.pics:hover {
+  flex: 2;
+  filter: grayscale(0%);
+}
+.pics {
+  position: absolute;
+  height: 320px;
+  width: 100%;
+  overflow: hidden;
+  filter: grayscale(100%);
+}
+.det {
+  position: relative;
+  bottom: -250px;
+  width: 100%;
+  text-align: center;
+  color: aliceblue;
+}
+#butt,
+#butt1,
+#butt2,
+#butt3,
+#butt4,
+#butt5,
+#butt6 {
+  transition: 0.3s linear;
+  /* display: none; */
+  margin: auto;
+  transform: translateY(-100px);
+  border-radius: 10px;
+  width: 120px;
+  height: 50px;
+  border: none;
+  outline: none;
+  background-color: #2196f3;
+  box-shadow: 0 0 30px #97f827;
+}
+.pic:hover #butt,
+.pic:hover #butt1,
+.pic:hover #butt2,
+.pic:hover #butt3,
+.pic:hover #butt4,
+.pic:hover #butt5,
+.pic:hover #butt6 {
+  color: white;
+  display: block;
+  outline: none;
+  border: none;
+  width: 180px;
+  font-size: 20px;
+  transform: translateY(0px);
+  background-color: #2196f3;
+  box-shadow: 0 0 10px #ddf129;
+}

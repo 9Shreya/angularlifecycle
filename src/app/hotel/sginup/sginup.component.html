@@ -1,0 +1,167 @@
+<div class="container-fluid"  id="displ">
+  <div class="row">
+    <div class="col-md-5">
+      <h2 class="a" style="font-size: 20px;">
+        Enter your details
+      </h2>
+      <div class="modeel" style="border: 2px solid rgb(168, 161, 161);">
+        <div class="model">
+          <form #user="ngForm" (ngSubmit)="onCreat(user)">
+            <div class="form-group">
+              <p class="a">Full Name</p>
+
+              <input
+                type="text"
+                #na="ngModel"
+                name="name"
+                id=""
+                [(ngModel)]="name"
+                class="form-control a"
+                [class.is-invalid]="na.invalid && na.touched"
+                [class.is-valid]="na.valid"
+                pattern="[\w\ ]{3,20}"
+                required
+              />
+              <div *ngIf="na.errors && na.touched && na.invalid">
+                <small class="text-danger" *ngIf="na.errors.required">
+                  Required
+                </small>
+                <small class="text-danger" *ngIf="na.errors.pattern">
+                  Name should be of atleast 3 letters
+                </small>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <p class="a">Mobile No.</p>
+              <input
+                type="text"
+                class="form-control a"
+                #phone="ngModel"
+                name="phone"
+                [(ngModel)]="phonee"
+                [class.is-invalid]="phone.touched && phone.invalid"
+                [class.is-valid]="phone.valid"
+                required
+                id=""
+                pattern="[\7-9][\d]{9}"
+              />
+              <div *ngIf="phone.touched && phone.invalid && phone.errors">
+                <small class="text-danger" *ngIf="phone.errors.required">
+                  Required
+                </small>
+                <small class="text-danger" *ngIf="phone.errors.pattern">
+                  mobile number should start with 7 or 8 or 9
+                </small>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <p class="a">Email</p>
+              <input
+                type="text"
+                name="email"
+                #email="ngModel"
+                [(ngModel)]="emaiil"
+                class="form-control a"
+                required
+                [class.is-invalid]="email.touched && email.invalid"
+                [class.is-valid]="email.valid"
+                id=""
+                pattern="[ \w\.-]{4,20}(@[\w]{3,6})(.[\w]{2,6})"
+              />
+              <div *ngIf="email.touched && email.invalid && email.errors">
+                <small class="text-danger" *ngIf="email.errors.required">
+                  Required
+                </small>
+                <small class="text-danger" *ngIf="email.errors.pattern">
+                  Email should be like example@gmail.com
+                </small>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <p class="a">Password</p>
+              <input
+                type="password"
+                name="pass"
+                #pass="ngModel"
+                [(ngModel)]="pas"
+                required
+                
+                class="form-control a"
+                [class.is-invalid]="pass.touched && pass.invalid"
+                [class.is-valid]="pass.valid"
+                pattern="[\w]{5,20}"
+              />
+
+              <div *ngIf="pass.invalid && pass.touched && pass.errors">
+                <small class="text-danger" *ngIf="pass.errors.required">
+                  Required
+                </small>
+                <small class="text-danger" *ngIf="pass.errors.pattern">
+                  Password should be of atleast 5 digits
+                </small>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <p class="a">Confirm Password</p>
+              <input
+                type="password"
+                name="cpass"
+                #cpass="ngModel"
+                [(ngModel)]="cpas"
+                required
+                class="form-control a"
+                [class.is-invalid]="cpass.touched && cpass.invalid"
+                pattern="[\w]{5,20}"
+              />
+              <div *ngIf="cpass.invalid && cpass.touched && cpass.errors">
+                <small class="text-danger" *ngIf="cpass.errors.required">
+                  Required
+                </small>
+                <small class="text-danger" *ngIf="pass != cpass">
+                  Password should be matching
+                </small>
+              </div>
+            </div>
+            <div class="a">
+              <button
+                [disabled]="user.invalid"
+                class="btn btn-primary"
+                style="width: 40%;"
+              >
+                Submit
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+     
+    </div>
+
+    <div class="col-md-5 text">
+      <p class="ptag">
+        Your details will not be shared with anyone feel free to sgin up our
+        site
+      </p>
+    </div>
+  </div>
+</div>
+<br />
+<div
+  id="hi"
+  style="
+    font-size: 40px;
+    font-weight: bolder;
+    top: 50%;
+    left: 40%;
+    position: absolute;
+    text-align: center;
+    display: none;
+  "
+>
+  ThankYou !!!<br /><br /><br />
+  Have a nice day..
+</div>

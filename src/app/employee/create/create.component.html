@@ -1,0 +1,171 @@
+<div class="whole" >
+    <div style="background-color: transparent; padding: 25px;overflow: hidden;border-radius: 5px;box-shadow:1px 2px 1.5px 2px  rgb(122, 114, 228); margin-top: 80px;">
+        <form (ngSubmit)="onCreate(form)" #form="ngForm">
+            <div class="form-group">
+
+            </div>
+            <div class="row">
+                <div class="col-sm-9">
+                    <div class="row">
+                        <label class="col-sm-2 col-form-label">Full Name :</label>
+
+                        <div class="form-group col-sm-9 inputfull" >
+
+                            <input type="text" #fnam="ngModel" required class="form-control" pattern="[\w]{2,20}" [class.is-invalid]="fnam.invalid && fnam.touched" [class.is-valid]="fnam.valid" name="fname" [(ngModel)]="fname" placeholder="First Name " />
+
+                            <div *ngIf="fnam.errors && fnam.invalid && fnam.touched">
+                                <small class="text-danger" *ngIf="fnam.errors.required">required</small>
+                                <small class="text-danger" *ngIf="fnam.errors.pattern">
+                  Name should be atleast of 2 letters
+                </small>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-2"></div>
+
+                        <div class="form-group col-sm-9 inputfull" >
+                            <input type="text" required class="form-control " pattern="[\w]{2,20}" [class.is-invalid]="lnam.invalid && lnam.touched" [class.is-valid]="lnam.valid" #lnam=ngModel name="lname" [(ngModel)]="lname" placeholder="Last Name" />
+
+                            <div *ngIf="lnam.errors && lnam.invalid && lnam.touched">
+                                <small class="text-danger" *ngIf="lnam.errors.required">required</small>
+                                <small class="text-danger" *ngIf="lnam.errors.pattern">
+                 Last Name should be atleast of 2 letters
+                </small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-3 imagecol">
+                    <input id="file-input" #photo=ngModel required mat-button style="display: none" type="file" name="img" (change)="onSelectFile($event)" [(ngModel)]="img" class="form-control-file" />
+                    <label for="file-input">
+      <div class="imgphoto" >
+        <div *ngIf='img!==null'>
+        <img [src]="img" height="120px" width="120px" alt="" preview style="float: right;border-radius: 5px;" />
+    </div>
+        <p *ngIf='img==null' style="padding: 34px;" >Image of employee</p></div>
+    </label>
+                </div>
+            </div>
+
+            <div class="row">
+                <label class="col-sm-2 col-form-label">Enter Position :</label>
+                <div class="form-group col-sm-10">
+                    <input type="text" class="form-control " 
+                    required name="position" #pos=ngModel 
+                    pattern="[\w]{4,20}" 
+                    [class.is-invalid]="pos.invalid && pos.touched" 
+                    [class.is-valid]="pos.valid" [(ngModel)]="position" 
+                    placeholder="Enter Position" />
+
+                    <div *ngIf="pos.errors && pos.invalid && pos.touched">
+                        <small class="text-danger" *ngIf="pos.errors.required">required</small>
+                        <small class="text-danger" *ngIf="pos.errors.pattern">
+             Position should be atleast of 4 letters
+            </small>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <label class="col-sm-2 col-form-label">Email</label>
+                <div class="form-group col-sm-10">
+
+
+                    <input type="email" required pattern="[\w\.-]{4,20}(@[\w]{3,6})(.[\w]{2,6})" class="form-control " required #ema=ngModel name="email" [class.is-invalid]="ema.invalid && ema.touched" [class.is-valid]="ema.valid" [(ngModel)]="email" aria-describedby="emailHelp"
+                        placeholder="Email Id" />
+                    <div *ngIf="ema.errors && ema.invalid && ema.touched">
+                        <small *ngIf="ema.errors.required" style="color: tomato;">required</small>
+                        <small *ngIf="ema.errors.pattern" style="color: tomato;">email should follow pattern name@gmail.com </small>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <label class="col-sm-2 col-form-label">Mobile No. :</label>
+                <div class="form-group col-sm-10 ">
+
+
+                    <input type="number" pattern="[7-9][\d]{9}" [class.is-invalid]="mobil.invalid && mobil.touched" required [class.is-valid]="mobil.valid" name="mobile" #mobil=ngModel [(ngModel)]="mobile" class="form-control " placeholder="Mobile No." />
+                    <div *ngIf="mobil.errors && mobil.invalid && mobil.touched">
+                        <small *ngIf="mobil.errors.required" style="color: tomato;">required</small
+            >
+            <small *ngIf="mobil.errors.pattern" style="color: tomato;"
+              >No should start with 7 or 8 or 9 and should be of 10 digits</small
+            >
+          </div>
+          </div>
+    </div>
+    
+    <div class="row">
+        <label class="col-sm-2 col-form-label">Date of Birth</label>
+
+
+    <div class="form-group col-sm-10">
+
+         <mat-form-field class="example-full-width " style="width: 100%" appearance="none">
+                                <mat-label>Date of Birth</mat-label>
+                                <input name="dob"class="form-control " type="date" style="width: 100%;padding-left: 10px;" required [(ngModel)]="dob"
+                            #do    [class.is-invalid]="do.invalid && do.touched" required [class.is-valid]="do.valid"  matInput />
+                               
+
+                                <!-- <mat-datepicker-toggle matSuffix [for]="picker" style="  z-index: 1200 !important">
+                                    <mat-icon matDatepickerToggleIcon>keyboard_arrow_down</mat-icon>
+                                    <mat-datepicker #picker style="  z-index: 1200 !important"></mat-datepicker>
+
+                                </mat-datepicker-toggle> -->
+                            
+                               
+                           </mat-form-field>
+                    
+        <small></small>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <label class="col-sm-2 col-form-label">Address</label>
+
+                    <div class="form-group col-sm-10">
+
+                        <textarea type="textarea" [class.is-invalid]="add.invalid && add.touched" [class.is-valid]="add.valid" required name="address" #add=ngModel [(ngModel)]="address" class="form-control " placeholder="Address"></textarea>
+                        <div *ngIf="add.errors && add.invalid && add.touched">
+                            <small class="text-danger" *ngIf="add.errors.required">required</small>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+
+                    <label class="col-sm-2 col-form-label">This is Employee Id</label>
+
+                    <div class="form-group col-sm-10">
+
+                        <input type="text" name="id" [(ngModel)]="id" class="form-control " placeholder="This is Employee Id" />
+                    </div>
+                </div>
+
+                <button (click)="openSnack('Employee data got added','ok')" type="submit"
+                 [disabled]="form.invalid" class="btn btn-primary" style="float: right; width: 45%">
+    Submit
+  </button>
+        </form>
+        </div>
+
+
+        <!-- Modal -->
+        <div class="modal fade" style="border-radius: 10px;" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h3 class="modal-title" id="exampleModalLabel">Employee data got saved</h3>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+                    </div>
+
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Ok</button>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>

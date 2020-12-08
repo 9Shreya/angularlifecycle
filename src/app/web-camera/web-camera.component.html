@@ -1,0 +1,6 @@
+<div style="display: flex;flex-wrap: wrap;">
+    <app-camera (pictureTaken)="handleImage($event)"></app-camera>
+    <div class="snapshot" *ngIf="webcamImage">
+        <img [src]="webcamImage.imageAsDataUrl" />
+    </div>
+</div>

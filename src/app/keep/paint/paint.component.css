@@ -1,0 +1,336 @@
+.testadd {
+    width: 56vw;
+    margin: 0 0 0 24%;
+}
+
+.btn-warning {
+    background-color: #ffe4b5 !important;
+}
+
+.notetag {
+    border: 1px solid black;
+    padding: 15px;
+}
+
+mat-icon:hover {
+    width: 30px;
+    height: 30px;
+    border: 0.5px solid rgb(243, 241, 241);
+    margin: 6px 0 0 6px;
+    border-radius: 50%;
+    background-color: #c0bfbf;
+}
+
+.mat-form-field+.mat-form-field {
+    margin-left: 8px;
+}
+
+.example-headers-align .mat-expansion-panel-header-title,
+.example-headers-align .mat-expansion-panel-header-description {
+    flex-basis: 0;
+}
+
+.example-headers-align .mat-expansion-panel-header-description {
+    justify-content: space-between;
+    align-items: center;
+}
+
+.example-headers-align .mat-form-field+.mat-form-field {
+    margin-left: 8px;
+}
+
+::-webkit-input-placeholder {
+    /* WebKit browsers */
+    color: black;
+    font-weight: bold;
+    opacity: 0.5 !important;
+}
+
+#inputtag {
+    width: 100%;
+    height: 50px;
+    /* border: 1px solid rgb(146, 142, 142); */
+    box-shadow: 0px 1px 2px 2px rgb(209, 200, 200);
+    border-radius: 5px;
+    margin-bottom: 10px;
+    color: black;
+    font-weight: bold;
+    opacity: 0.5 !important;
+    padding: 12px 0 0 18px;
+    display: flex;
+}
+
+#title {
+    display: none;
+}
+
+.paint {
+    width: 25px;
+    height: 15px;
+    opacity: 0.6;
+}
+
+.paintt {
+    width: 20px;
+    height: 15px;
+    margin-top: -20px;
+}
+
+.image {
+    margin-left: 15vw;
+    margin-top: 10px;
+}
+
+.modal-dialog {
+    width: 100vw;
+    height: 100px;
+}
+
+.card {
+    width: 250px;
+    height: 100%;
+    margin: 15px 15px 0 0;
+    border: 0.2px solid rgb(252, 247, 247);
+    border-radius: 10px;
+}
+
+.card:hover .cardicon {
+    visibility: visible;
+}
+
+.titleicon mat-icon {
+    margin: 0 4% 0 4%;
+    cursor: pointer;
+}
+
+.btn-warning {
+    background-color: #ffe4b5 !important;
+    float: right;
+    margin-top: -8%;
+}
+
+
+/* #file{
+    height:20px;
+    border-radius: 5px;
+    border:.5px solid grey;
+    color: rgb(201, 195, 195);
+  } */
+
+.cardicon {
+    margin-bottom: -25px;
+    visibility: hidden;
+    cursor: pointer;
+}
+
+mat-icon {}
+
+.notecolors,
+.colors,
+.noecolors {
+    width: 90px;
+    height: 90px;
+    display: flex;
+    flex-wrap: wrap;
+    border: 0.2px solid rgb(192, 189, 189);
+    border-radius: 5px;
+    position: absolute;
+    margin: 0 0 0 -80px;
+}
+
+.noecolors {
+    margin: -95px 0 0 145px;
+}
+
+.notecolors {
+    margin: -125px 0 0 105px;
+}
+
+.notecolors .input input,
+.colors .input input,
+.noecolors .input input {
+    outline: none;
+    border: 2px solid rgba(23, 67, 88, 0.2);
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+        color: transparent;
+        /* color: cadetblue; */
+
+}
+
+.notecolors .input,
+.colors .input,
+.noecolors .input {
+    margin: 2% 1% 0 1%;
+}
+
+.notecolors input,
+.colors input,
+.noecolors input {
+    outline: none;
+    border: 3px solid rgb(228, 224, 224);
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    background-color: rgb(252, 252, 253);
+    margin: 2% 1% 0 1%;
+    color: transparent;
+}
+
+.titleiconmodal mat-icon {
+    float: left !important;
+    margin: 0 60px 0px 50px;
+    cursor: pointer;
+}
+
+mat-card mat-icon:hover {
+    width: 30px;
+    height: 30px;
+    border: 0.5px solid rgb(243, 241, 241);
+    border-radius: 50%;
+    background-color: #c0bfbf;
+}
+
+.remain {
+    border: solid;
+    width: 280px;
+    height: 280px;
+    position: absolute;
+}
+
+#remainder {
+    color: white !important;
+    width: 50px;
+    padding-right: 5px;
+    margin-left: -20px;
+}
+
+.datein {
+    width: 200px;
+    height: 20px;
+    border-radius: 20px;
+    border: none;
+    outline: none;
+    background-color: rgba(166, 170, 166, 0.3);
+    text-align: center;
+    font-size: 14px;
+}
+
+.far {
+    margin-left: 8px;
+    margin-top: 4px;
+    position: absolute;
+}
+
+.fa-clock-o {
+    margin-right: 3px;
+}
+
+@media (min-width: 900px) {
+    .notetag {
+        width: 50%;
+        margin: auto;
+    }
+    .paint {
+        margin-left: 70%;
+    }
+}
+
+@media (min-width: 1026px) {
+    .notetag {
+        width: 50%;
+        margin: auto;
+    }
+}
+
+@media (max-width: 900px) {
+    .notetag {
+        width: 80%;
+        margin: auto;
+    }
+    .paint {
+        margin-left: 60%;
+    }
+}
+
+@media (max-width: 800px) {
+    .pin {
+        margin-left: -2vw;
+    }
+    .paint {
+        margin-left: 50%;
+    }
+    .notetag {
+        width: 80%;
+        margin-left: -5px;
+    }
+}
+
+@media (max-width: 740px) {
+    .paint {
+        margin-left: 40%;
+    }
+    .notetag {
+        width: 85%;
+    }
+    /* .card{
+      width:100%
+    } */
+}
+
+@media (max-width: 640px) {
+    .paint {
+        margin-left: 40%;
+    }
+    .notetag {
+        width: 83%;
+    }
+    .card {
+        width: 80%;
+    }
+}
+
+@media (max-width: 430px) {
+    .paint {
+        margin-left: -30px;
+    }
+    .pin {
+        margin-right: -10px;
+    }
+    .notetag {
+        width: 95%;
+    }
+    .card {
+        width: 100%;
+    }
+}
+
+@media (max-width: 370px) {
+    .paint {
+        margin-left: -20vw;
+    }
+    /* .pin {
+    margin-left: ;
+  } */
+    .notetag {
+        width: 95%;
+    }
+}
+.allpin{
+    margin: 8px;
+    width: 20px;
+    height: 20px;
+}
+
+.clasmain{
+height: 100px;
+width: 150px;
+}
+@media (max-width: 770px) {
+  .clasmain{
+height: 100px;
+width: 90%;
+margin-top: 20px;
+} 
+}

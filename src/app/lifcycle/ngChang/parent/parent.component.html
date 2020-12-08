@@ -1,0 +1,23 @@
+<div class="container main">
+
+    <div class="parent">
+        <p class="par">Parent</p>
+        <div>
+            <p> Your Text: <br><input type="text" [(ngModel)]='usertext'>
+            </p>
+        </div>
+
+        <p> your number: <br><input type="number" [(ngModel)]='parent'>
+        </p><br>
+        <br>
+        <button class="btn-success" (click)=upadate() type="button">upadate</button>
+        <br><br>
+        <button class="btn-success" (click)=updated()>updateDoCheck</button><br><Br>
+        <button class="btn-success" (click)=destroy()>Destroy the file</button>
+    </div>
+    <div class="child">
+        <p class="par">Child</p>
+        <app-simplechange *ngIf=isVisible [simpleinput]='usertext' [num]=parent [myName]="namee" [doCheck]='user'>
+        </app-simplechange>
+    </div>
+</div>
