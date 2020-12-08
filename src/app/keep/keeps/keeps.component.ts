@@ -8,11 +8,11 @@ import {Component,OnInit} from "@angular/core";
 })
 export class KeepsComponent implements OnInit {
   constructor(private http: HttpClient) {
-    this.http.get(this.remurl).subscribe((res) => {
-      this.data = res;
-      console.log(res);
+    // this.http.get(this.remurl).subscribe((res) => {
+    //   this.data = res;
+    //   console.log(res);
 
-    });
+    // });
   }
 
   ngOnInit(): void {}

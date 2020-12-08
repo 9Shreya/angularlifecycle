@@ -27,6 +27,7 @@ export class AppComponent implements OnInit {
   base64String: any;
   ngOnInit() {
     this.hi()
+    this.loading()
   }
   hi() {
     console.log(this.data);
@@ -36,6 +37,13 @@ export class AppComponent implements OnInit {
   // }
   name;
   hello
+  file: boolean = false
+  loading() {
+    setTimeout(() => {
+      this.file = false
+    },1000);
+    this.file = true
+  }
   //   ged() {
 
   //     console.log("hi");
